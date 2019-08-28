@@ -28,6 +28,7 @@ async function app() {
   document.getElementById('class-a').addEventListener('click', () => addExample(0));
   document.getElementById('class-b').addEventListener('click', () => addExample(1));
   document.getElementById('class-c').addEventListener('click', () => addExample(2));
+  document.getElementById('class-d').addEventListener('click', () => addExample(3));
 
 
   while (true) {
@@ -37,10 +38,10 @@ async function app() {
       // Get the most likely class and confidences from the classifier module.
       const result = await classifier.predictClass(activation);
 
-      const classes = ['denis', 'izabela', 'sintia'];
+      const classes = ['ništa', 'osmijeh', 'plač', 'zijevanje'];
       document.getElementById('console').innerText = `
-        To_Je: ${classes[result.classIndex]}\n
-        SiguranSam: ${result.confidences[result.classIndex]}
+        To_Je: ${classes[parseInt(result.label)]}\n
+        SiguranSam: ${result.confidences[parseInt(result.label)]}
       `;
     }
 
